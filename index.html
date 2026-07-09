@@ -1,12 +1,96 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>My Static HTML Site</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ロマンシング サガ2 リベンジオブザセブン ｜ 非公式紹介ページ</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho:wght@600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Azure Static Web Apps Demo</h1>
-  <p>GitHub Actions からデプロイしています。中村</p>
+
+<div class="page">
+
+  <!-- ===== Hero ===== -->
+  <header class="hero">
+    <div class="crest" aria-hidden="true">
+      <div class="crest__ring"></div>
+      <span class="crest__num">Ⅱ</span>
+    </div>
+
+    <div class="hero__text">
+      <p class="eyebrow">SAGA CHRONICLE — 帝国暦、七つの英雄の記録</p>
+      <h1 class="hero__title">
+        <span class="hero__title-en">ROMANCING SaGa 2</span>
+        <span class="hero__title-ja">リベンジ オブ ザ セブン</span>
+      </h1>
+      <p class="hero__copy">
+        皇帝から皇帝へ、力と意志を継ぎながら七英雄に挑む——1993年の傑作が姿を変えて甦る。
+      </p>
+    </div>
+
+    <ul class="platform-row" aria-label="対応プラットフォーム">
+      <li>Switch</li><li>Switch 2</li><li>PS5</li><li>PS4</li><li>Steam</li>
+    </ul>
+  </header>
+
+  <!-- ===== あらすじ + システム ===== -->
+  <main class="body-grid">
+
+    <section class="story" aria-labelledby="story-h">
+      <h2 id="story-h" class="block-title"><span>Ⅰ</span>追放された英雄、還る</h2>
+      <p class="story__text">
+        かつて世界を救った「七英雄」は、その強大すぎる力を恐れられ異世界へ追放された。
+        数千年後、伝説となった彼らがついに還ってきた。プレイヤーは一人の英雄ではなく
+        <strong>バレンヌ帝国の帝位そのもの</strong>として、代々力を継承しながらこの戦いに挑む。
+      </p>
+    </section>
+
+    <section class="system" aria-labelledby="system-h">
+      <h2 id="system-h" class="block-title"><span>Ⅱ</span>受け継がれる、サガの流儀</h2>
+      <div class="card-grid">
+        <article class="card">
+          <p class="card__glyph">自</p>
+          <h3 class="card__title">フリーシナリオ</h3>
+          <p class="card__text">攻める順序も戦い方も自由。決断が帝国史を変える。</p>
+        </article>
+        <article class="card">
+          <p class="card__glyph">閃</p>
+          <h3 class="card__title">閃き</h3>
+          <p class="card__text">戦闘の中でふと新技を閃く、サガ独自の成長システム。</p>
+        </article>
+        <article class="card">
+          <p class="card__glyph">陣</p>
+          <h3 class="card__title">陣形</h3>
+          <p class="card__text">仲間の配置が戦況を左右する隊列の戦術。</p>
+        </article>
+        <article class="card">
+          <p class="card__glyph">刻</p>
+          <h3 class="card__title">タイムラインバトル</h3>
+          <p class="card__text">行動順を可視化する新戦闘。連携技も追加。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="release" aria-labelledby="release-h">
+      <h2 id="release-h" class="block-title"><span>Ⅲ</span>帝国暦、開幕の記録</h2>
+      <table class="release__table">
+        <tbody>
+          <tr><th>原作</th><td>ロマンシング サ・ガ2（1993年12月・スーパーファミコン）</td></tr>
+          <tr><th>発売日</th><td>2024年10月24日（Switch/PS5/PS4）・10月25日（Steam）</td></tr>
+          <tr><th>対応機種</th><td>Switch, Switch 2, PS5, PS4, PC（Steam）</td></tr>
+          <tr><th>ジャンル</th><td>フリーシナリオRPG</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <footer>
+    © SQUARE ENIX
+  </footer>
+</div>
 </body>
 </html>

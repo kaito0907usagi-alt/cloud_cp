@@ -1,9 +1,347 @@
-body {
-  font-family: sans-serif;
-  margin: 40px;
-  background-color: green;
+/* ==========================================================
+   Tokens
+   ========================================================== */
+:root {
+  --ink:            #180f0b;
+  --ink-soft:       #241611;
+  --parchment:      #ece2c9;
+  --parchment-dim:  #ddd0ae;
+  --ivory:          #f6efdd;
+  --red:            #7c1a26;
+  --red-deep:       #4c0f18;
+  --gold:           #c6a24d;
+  --gold-light:     #e6cd8c;
+  --gold-dim:       #8f722f;
+
+  --font-display-en: "Cinzel", serif;
+  --font-display-ja: "Shippori Mincho", serif;
+  --font-body:        "Noto Sans JP", sans-serif;
 }
 
-h1 {
-  color: #0078d4;
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { margin: 0; }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+table { border-collapse: collapse; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ==========================================================
+   Page shell — fits one screen, no scroll
+   ========================================================== */
+.page {
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2.2vh 4vw;
+  gap: 1.6vh;
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(124,26,38,0.35), transparent 60%),
+    linear-gradient(180deg, var(--ink-soft) 0%, var(--ink) 45%, var(--ink) 100%);
+}
+
+/* ==========================================================
+   Hero
+   ========================================================== */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.4vh;
+  border-bottom: 1px solid var(--gold-dim);
+}
+
+.crest {
+  --size: 58px;
+  width: var(--size);
+  height: var(--size);
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.crest__ring {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(
+    50% 0%, 62% 8%, 85% 8%, 92% 25%, 100% 38%,
+    92% 58%, 100% 75%, 85% 90%, 62% 96%,
+    50% 100%, 38% 96%, 15% 90%, 0% 75%,
+    8% 58%, 0% 38%, 8% 25%, 15% 8%, 38% 8%
+  );
+  background: linear-gradient(160deg, var(--red) 0%, var(--red-deep) 100%);
+  box-shadow: 0 0 0 1px var(--ink), 0 3px 10px rgba(0,0,0,0.5);
+}
+
+.crest__num {
+  position: relative;
+  font-family: var(--font-display-en);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gold-light);
+}
+
+.hero__text { flex: 1 1 340px; min-width: 0; }
+
+.eyebrow {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-bottom: 0.3rem;
+}
+
+.hero__title {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 0.35rem;
+}
+
+.hero__title-en {
+  font-family: var(--font-display-en);
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  letter-spacing: 0.04em;
+  color: var(--ivory);
+  font-weight: 600;
+}
+
+.hero__title-ja {
+  font-family: var(--font-display-ja);
+  font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+  font-weight: 700;
+  color: var(--gold-light);
+}
+
+.hero__copy {
+  font-size: 0.82rem;
+  color: var(--parchment-dim);
+  max-width: 54em;
+}
+
+.platform-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.platform-row li {
+  font-size: 0.65rem;
+  letter-spacing: 0.03em;
+  padding: 0.35em 0.75em;
+  border: 1px solid var(--gold-dim);
+  border-radius: 999px;
+  color: var(--gold-light);
+  background: rgba(198,162,77,0.06);
+  white-space: nowrap;
+}
+
+/* ==========================================================
+   Body grid
+   ========================================================== */
+.body-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr;
+  grid-template-rows: auto 1fr;
+  gap: 1.4vh 2.4rem;
+  min-height: 0;
+}
+
+.story { grid-column: 1; grid-row: 1; }
+.release { grid-column: 1; grid-row: 2; }
+.system { grid-column: 2; grid-row: 1 / span 2; }
+
+.block-title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-display-ja);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ivory);
+  margin-bottom: 0.7rem;
+}
+
+.block-title span {
+  font-family: var(--font-display-en);
+  font-size: 0.72rem;
+  color: var(--gold-dim);
+  border: 1px solid var(--gold-dim);
+  width: 1.7em;
+  height: 1.7em;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+/* --- story --- */
+.story__text {
+  font-size: 0.82rem;
+  color: var(--parchment);
+  line-height: 1.85;
+  border-left: 2px solid var(--gold);
+  padding-left: 1rem;
+}
+
+.story__text strong {
+  color: var(--gold-light);
+  font-weight: 700;
+}
+
+/* --- system cards --- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  height: 100%;
+}
+
+.card {
+  background: linear-gradient(165deg, rgba(198,162,77,0.07), transparent 60%);
+  border: 1px solid rgba(198,162,77,0.28);
+  border-radius: 4px;
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.card__glyph {
+  font-family: var(--font-display-ja);
+  font-size: 1.05rem;
+  color: var(--gold);
+  width: 1.9em;
+  height: 1.9em;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--gold-dim);
+  border-radius: 50%;
+}
+
+.card__title {
+  font-family: var(--font-display-ja);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ivory);
+}
+
+.card__text {
+  font-size: 0.72rem;
+  color: var(--parchment-dim);
+  line-height: 1.6;
+}
+
+/* --- release table --- */
+.release__table {
+  width: 100%;
+  font-size: 0.76rem;
+}
+
+.release__table tr {
+  border-bottom: 1px solid rgba(198,162,77,0.18);
+}
+
+.release__table th,
+.release__table td {
+  text-align: left;
+  padding: 0.4rem 0.4rem;
+  font-weight: 400;
+  vertical-align: top;
+}
+
+.release__table th {
+  width: 6em;
+  color: var(--gold-light);
+  font-family: var(--font-display-ja);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.release__table td { color: var(--parchment); }
+
+/* ==========================================================
+   Footer
+   ========================================================== */
+.footer {
+  text-align: center;
+  border-top: 1px solid var(--gold-dim);
+  padding-top: 1vh;
+  flex-shrink: 0;
+}
+
+.footer p {
+  font-size: 0.62rem;
+  color: var(--parchment-dim);
+  opacity: 0.65;
+  line-height: 1.6;
+  max-width: 50em;
+  margin: 0 auto;
+}
+
+/* ==========================================================
+   Responsive (narrow viewports still fit without scroll first,
+   fall back to natural flow on very small screens)
+   ========================================================== */
+@media (max-width: 760px) {
+  .page { height: auto; min-height: 100vh; padding: 3vh 5vw; gap: 2.2vh; }
+  .body-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  .story { grid-column: 1; grid-row: 1; }
+  .system { grid-column: 1; grid-row: 2; }
+  .release { grid-column: 1; grid-row: 3; }
+  .card-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ==========================================================
+   Print — fits within 1–2 A4 pages
+   ========================================================== */
+@media print {
+  @page { size: A4; margin: 14mm; }
+
+  html, body { height: auto; background: var(--ivory); }
+
+  .page {
+    height: auto;
+    min-height: 0;
+    background: none;
+    color: var(--ink);
+    padding: 0;
+    gap: 6mm;
+  }
+
+  .hero { border-bottom-color: var(--gold-dim); }
+  .hero__copy, .story__text { color: #3a2c20; }
+  .hero__title-ja, .card__title, .block-title { color: var(--red-deep); }
+  .platform-row li { color: var(--red-deep); border-color: var(--gold-dim); }
+  .card { background: #f2e9d3; border-color: rgba(140,100,30,0.35); break-inside: avoid; }
+  .release__table td { color: #3a2c20; }
+  .footer p { color: #6b5d47; opacity: 1; }
+  .system, .story, .release, .card { break-inside: avoid; }
 }
