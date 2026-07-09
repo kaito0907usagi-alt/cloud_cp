@@ -71,13 +71,20 @@ table { border-collapse: collapse; }
 }
 
 .crest {
-  --size: 58px;
-  width: var(--size);
-  height: var(--size);
+  width: 120px; /* Adjust size for the logo */
+  max-width: 100%;
   position: relative;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+}
+
+.crest img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .crest__ring {
